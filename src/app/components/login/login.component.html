@@ -1,0 +1,37 @@
+<!-- BOOTSTRAP IMPORT -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+<!-- GOOGLE FONTS IMPORT -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
+
+<div class="container-fluid" style="overflow: hidden;">
+    <div class="row featurette" style="margin-top: 100px;">
+        <div class="col-md-7 align-items-center">
+            <h3>Welcome to <span style="color: #5B7AD8;font-family: Montserrat, sans-serif;margin-top: 130px;">JIRAMETRIX</span></h3>
+            <form style="margin-top: 150px;" nz-form [formGroup]="loginForm" class="login-form">
+                <nz-form-item>
+                    <nz-form-control>
+                      <nz-input-group nzPrefixIcon="user">
+                        <input type="text" nz-input placeholder="Please enter your email" formControlName="jiraEmail"/>
+                      </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+                <nz-form-item>
+                    <nz-form-control>
+                      <nz-input-group nzPrefixIcon="lock">
+                        <input type="text" nz-input placeholder="Enter your Auth Token" formControlName="jiraToken"/>
+                      </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </form>
+            <button nz-button nzType="primary" (click)="submitLoginForm()">Get started</button>
+        </div>
+        <div class="col-md-5">
+            <img src="https://img.freepik.com/free-vector/customer-support-flat-illustration_23-2148892786.jpg?t=st=1654105545~exp=1654106145~hmac=27062fa54d342628e51146b31d4e6ed8fd9ee1f31cd2fef78fefc6e773edfabe&w=740" alt="">
+        </div>
+      </div>
+</div>

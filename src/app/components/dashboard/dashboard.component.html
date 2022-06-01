@@ -1,0 +1,207 @@
+<!-- BOOTSTRAP IMPORT -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" />
+<!-- GOOGLE FONTS IMPORT -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet" />
+
+<!-- <nz-layout class="left-layout">
+    <nz-sider nzTheme="dark" nzCollapsible [(nzCollapsed)]="isCollapsed" nzWidth="200px">
+        <div class="logo">
+            <span *ngIf="isCollapsed" style="margin-left: 10px;font-size:larger">J M</span>
+            <span *ngIf="!isCollapsed" style="margin-left: 20px;font-size:larger">JIRAMETRIX</span>
+        </div>
+        <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-submenu nzTitle="Projects" nzIcon="build">
+                <ul>
+                    <li nz-menu-item>Tom</li>
+                    <li nz-menu-item>Bill</li>
+                    <li nz-menu-item>Alex</li>
+                    <li nz-menu-item>James</li>
+                    <li nz-menu-item>Alex</li>
+                    <li nz-menu-item>Catherine</li>
+                </ul>
+            </li>
+            <li nz-submenu nzTitle="Sprints" nzIcon="sliders">
+                <ul>
+                    <li nz-menu-item>Team 1</li>
+                    <li nz-menu-item>Team 2</li>
+                    <li nz-menu-item>Team 3</li>
+                    <li nz-menu-item>Team 4</li>
+                    <li nz-menu-item>Team 5</li>
+                    <li nz-menu-item>Team 6</li>
+                </ul>
+            </li>
+            <li nz-menu-item>
+                <i nz-icon nzType="dashboard"></i>
+                <span>Boards</span>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-layout class="right-layout">
+        <nz-header>
+            <div class="d-flex flex-row-reverse">
+                <div class="mr-3" style="color: #1890FF;font-size: 15px;cursor: pointer;">Siddhesh Thipse</div>
+                <div class=" mr-3"><nz-divider nzType="vertical"></nz-divider></div>
+                <div class="mr-3"><i nz-icon nzType="setting" nzTheme="outline" style="font-size: 18px;cursor: pointer;"></i></div>
+                <div class="ml-3 mr-3"><nz-divider nzType="vertical"></nz-divider></div>
+                <div><i nz-icon nzType="bell" nzTheme="outline" style="font-size: 18px;cursor: pointer;"></i></div>
+            </div>
+        </nz-header>
+        <nz-content>
+            <nz-breadcrumb>
+                <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+                <nz-breadcrumb-item>Dashboard</nz-breadcrumb-item>
+            </nz-breadcrumb>
+            <div class="inner-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-donut-chart></app-donut-chart>
+                    </div>
+                    <div class="col-md-6">
+                        <app-bar-graph></app-bar-graph>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6">
+                        <app-donut-chart></app-donut-chart>
+                    </div>
+                    <div class="col-md-6">
+                        <app-bar-graph></app-bar-graph>
+                    </div>
+                </div>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout> -->
+
+<nz-layout class="layout">
+    <nz-sider nzTheme="light" class="shadow">
+        <div class="logo">
+            <span *ngIf="isCollapsed" style="margin-left: 10px; font-size: larger">J M</span>
+            <span *ngIf="!isCollapsed" style="margin-left: 20px; font-size: larger">JIRAMETRIX</span>
+        </div>
+        <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+            <li nz-menu-item>
+                <i nz-icon nzType="dashboard"></i>
+                <span>General</span>
+            </li>
+            <li nz-submenu nzTitle="Sprints" nzIcon="build">
+                <ul>
+                    <li nz-menu-item>Sprint 1</li>
+                    <li nz-menu-item>Sprint 2</li>
+                    <li nz-menu-item>Sprint 3</li>
+                    <li nz-menu-item>Sprint 4</li>
+                </ul>
+            </li>
+        </ul>
+    </nz-sider>
+    <nz-layout class="right-layout">
+        <nz-header>
+            <div class="d-flex flex-row-reverse">
+                <div class="mr-3" style="color: #5b7ad8; font-size: 15px; cursor: pointer" (click)="jiraModalOpen()">
+                    Siddhesh Thipse
+                </div>
+                <div class="mr-3">
+                    <nz-divider nzType="vertical"></nz-divider>
+                </div>
+                <div class="mr-3">
+                    <i nz-icon nzType="setting" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
+                </div>
+                <div class="ml-3 mr-3">
+                    <nz-divider nzType="vertical"></nz-divider>
+                </div>
+                <div>
+                    <i nz-icon nzType="bell" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
+                </div>
+            </div>
+        </nz-header>
+        <nz-content>
+            <nz-breadcrumb class="mb-2">
+                <nz-breadcrumb-item>Home</nz-breadcrumb-item>
+                <nz-breadcrumb-item>Dashboard</nz-breadcrumb-item>
+            </nz-breadcrumb>
+            <div class="inner-content" style="background-color: #f0f2f5">
+                <div class="row mb-2">
+                    <div class="col-sm-3">
+                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
+                            <div class="card-body">
+                                <nz-statistic [nzValue]="567" [nzTitle]="'New Accounts'"></nz-statistic>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
+                            <div class="card-body">
+                                <nz-statistic [nzValue]="45" [nzTitle]="'Total Expenses'"></nz-statistic>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
+                            <div class="card-body">
+                                <nz-statistic [nzValue]="50" [nzTitle]="'Company Value'"></nz-statistic>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-3">
+                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
+                            <div class="card-body">
+                                <nz-statistic [nzValue]="540" [nzTitle]="'New Expenses'"></nz-statistic>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <div class="card shadow">
+                            <nz-divider nzText="Traffic Sources" nzOrientation="left"></nz-divider>
+                            <div class="card-body">
+                                <app-donut-chart></app-donut-chart>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="card shadow">
+                            <nz-divider nzText="Income" nzOrientation="left"></nz-divider>
+                            <div class="card-body">
+                                <app-bar-graph></app-bar-graph>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12"></div>
+                </div>
+            </div>
+        </nz-content>
+    </nz-layout>
+</nz-layout>
+
+<nz-modal [(nzVisible)]="jiraCredentialModalVisible" nzTitle="Enter your credentials" (nzOnCancel)="jiraModalCancel()"
+    (nzOnOk)="onCredentialsSubmit()" [nzOkLoading]="connectionProgress">
+    <form *nzModalContent [formGroup]="jiraCredentialsForm">
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">Username</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input placeholder="Enter your Email ID" formControlName="jiraEmail" />
+            </nz-form-control>
+        </nz-form-item>
+        <nz-form-item>
+            <nz-form-label [nzSm]="6" [nzXs]="24">Jira API Token</nz-form-label>
+            <nz-form-control [nzSm]="14" [nzXs]="24">
+                <input nz-input placeholder="Enter Jira API Token" formControlName="jiraToken"
+                    (keydown.enter)="onCredentialsSubmit()" />
+            </nz-form-control>
+        </nz-form-item>
+    </form>
+    <div *nzModalFooter>
+        <button nz-button nzType="primary" [disabled]="!jiraCredentialsForm.valid" (click)="onCredentialsSubmit()"
+            [nzLoading]="connectionProgress">
+            Submit
+        </button>
+    </div>
+</nz-modal>
