@@ -78,108 +78,140 @@
     </nz-layout>
 </nz-layout> -->
 
-<nz-layout class="layout">
-    <nz-sider nzTheme="light" class="shadow">
-        <div class="logo">
-            <span *ngIf="isCollapsed" style="margin-left: 10px; font-size: larger">J M</span>
-            <span *ngIf="!isCollapsed" style="margin-left: 20px; font-size: larger">JIRAMETRIX</span>
-        </div>
-        <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-            <li nz-menu-item>
-                <i nz-icon nzType="dashboard"></i>
-                <span>General</span>
-            </li>
-            <li nz-submenu nzTitle="Sprints" nzIcon="build">
-                <ul>
-                    <li nz-menu-item>Sprint 1</li>
-                    <li nz-menu-item>Sprint 2</li>
-                    <li nz-menu-item>Sprint 3</li>
-                    <li nz-menu-item>Sprint 4</li>
-                </ul>
-            </li>
-        </ul>
-    </nz-sider>
-    <nz-layout class="right-layout">
-        <nz-header>
-            <div class="d-flex flex-row-reverse">
-                <div class="mr-3" style="color: #5b7ad8; font-size: 15px; cursor: pointer" (click)="jiraModalOpen()">
-                    Siddhesh Thipse
-                </div>
-                <div class="mr-3">
-                    <nz-divider nzType="vertical"></nz-divider>
-                </div>
-                <div class="mr-3">
-                    <i nz-icon nzType="setting" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
-                </div>
-                <div class="ml-3 mr-3">
-                    <nz-divider nzType="vertical"></nz-divider>
-                </div>
-                <div>
-                    <i nz-icon nzType="bell" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
-                </div>
+<nz-spin nzTip="Loading..." [nzSpinning]="isLoading">
+    <nz-layout class="layout">
+        <nz-sider nzTheme="light" class="shadow">
+            <div class="logo">
+                <span *ngIf="isCollapsed" style="margin-left: 10px; font-size: larger">J M</span>
+                <span *ngIf="!isCollapsed" style="margin-left: 20px; font-size: larger">JIRAMETRIX</span>
             </div>
-        </nz-header>
-        <nz-content>
-            <nz-breadcrumb class="mb-2">
-                <nz-breadcrumb-item>Home</nz-breadcrumb-item>
-                <nz-breadcrumb-item>Dashboard</nz-breadcrumb-item>
-            </nz-breadcrumb>
-            <div class="inner-content" style="background-color: #f0f2f5">
-                <div class="row mb-2">
-                    <div class="col-sm-3">
-                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
-                            <div class="card-body">
-                                <nz-statistic [nzValue]="567" [nzTitle]="'New Accounts'"></nz-statistic>
+            <ul nz-menu nzTheme="light" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
+                <li nz-menu-item nzSelected>
+                    <i nz-icon nzType="dashboard"></i>
+                    <span>General</span>
+                </li>
+                <li nz-submenu nzTitle="Sprints" nzIcon="build">
+                    <ul>
+                        <li nz-menu-item>Sprint 1</li>
+                        <li nz-menu-item>Sprint 2</li>
+                        <li nz-menu-item>Sprint 3</li>
+                        <li nz-menu-item>Sprint 4</li>
+                    </ul>
+                </li>
+            </ul>
+        </nz-sider>
+        <nz-layout class="right-layout">
+            <nz-header>
+                <div class="d-flex flex-row-reverse">
+                    <div class="mr-3" style="color: #5b7ad8; font-size: 15px; cursor: pointer"
+                        (click)="jiraModalOpen()">
+                        Siddhesh Thipse
+                    </div>
+                    <div class="mr-3">
+                        <nz-divider nzType="vertical"></nz-divider>
+                    </div>
+                    <div class="mr-3">
+                        <i nz-icon nzType="setting" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
+                    </div>
+                    <div class="ml-3 mr-3">
+                        <nz-divider nzType="vertical"></nz-divider>
+                    </div>
+                    <div>
+                        <i nz-icon nzType="bell" nzTheme="outline" style="font-size: 18px; cursor: pointer"></i>
+                    </div>
+                </div>
+            </nz-header>
+            <nz-content>
+                <nz-breadcrumb class="mb-2">
+                    <nz-breadcrumb-item style="cursor: pointer" (click)="navigateToLaunchpad()">Home
+                    </nz-breadcrumb-item>
+                    <nz-breadcrumb-item>Dashboard</nz-breadcrumb-item>
+                </nz-breadcrumb>
+                <div class="inner-content" style="background-color: #f0f2f5">
+                    <div class="row mb-2">
+                        <div class="col-sm-3">
+                            <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px"
+                                (click)="cardClick('Epic')">
+                                <div class="card-body">
+                                    <nz-statistic [nzValue]="dashboardEpics.count" [nzTitle]="'Epics'"></nz-statistic>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px"
+                                (click)="cardClick('Userstory')">
+                                <div class="card-body">
+                                    <nz-statistic [nzValue]="dashboardStories.count" [nzTitle]="'User Stories'">
+                                    </nz-statistic>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px"
+                                (click)="cardClick('Subtask')">
+                                <div class="card-body">
+                                    <nz-statistic [nzValue]="dashboardSubtasks.count" [nzTitle]="'Subtasks'">
+                                    </nz-statistic>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px"
+                                (click)="cardClick('Bug')">
+                                <div class="card-body">
+                                    <nz-statistic [nzValue]="dashboardBugs.count" [nzTitle]="'Bugs'"></nz-statistic>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
-                            <div class="card-body">
-                                <nz-statistic [nzValue]="45" [nzTitle]="'Total Expenses'"></nz-statistic>
+                    <div class="row mb-2">
+                        <div class="col-sm-6">
+                            <div class="card shadow">
+                                <nz-divider nzText="Workitem Distribution" nzOrientation="left"></nz-divider>
+                                <div class="card-body">
+                                    <app-donut-chart [inputData]="currentChartData"></app-donut-chart>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card shadow">
+                                <nz-divider nzText="Assigned To" nzOrientation="left"></nz-divider>
+                                <div class="card-body">
+                                    <app-bar-graph [inputData]="currentChartData"></app-bar-graph>
+                                </div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-sm-3">
-                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
-                            <div class="card-body">
-                                <nz-statistic [nzValue]="50" [nzTitle]="'Company Value'"></nz-statistic>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <div class="card shadow" style="border-bottom: 4px solid #5b7ad8; border-radius: 8px">
-                            <div class="card-body">
-                                <nz-statistic [nzValue]="540" [nzTitle]="'New Expenses'"></nz-statistic>
-                            </div>
+                    <div class="row mt-3 shadow ml-1 mr-1">
+                        <div class="col-md-12 p-3" style="background-color: white;border-radius: 8px;">
+                            <nz-divider nzText="Workitem Details" nzOrientation="left"></nz-divider>
+                            <nz-table #basicTable [nzData]="tableDataset">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Key</th>
+                                        <th>Status</th>
+                                        <th>Assigned to</th>
+                                        <th>Created by</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let data of basicTable.data">
+                                        <td>{{ data.name }}</td>
+                                        <td>{{ data.key }}</td>
+                                        <td>{{ data.status }}</td>
+                                        <td>{{ data.assignedTo | titlecase }}</td>
+                                        <td>{{ data.createdBy | titlecase }}</td>
+                                    </tr>
+                                </tbody>
+                            </nz-table>
                         </div>
                     </div>
                 </div>
-                <div class="row mb-2">
-                    <div class="col-sm-6">
-                        <div class="card shadow">
-                            <nz-divider nzText="Traffic Sources" nzOrientation="left"></nz-divider>
-                            <div class="card-body">
-                                <app-donut-chart></app-donut-chart>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-sm-6">
-                        <div class="card shadow">
-                            <nz-divider nzText="Income" nzOrientation="left"></nz-divider>
-                            <div class="card-body">
-                                <app-bar-graph></app-bar-graph>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-12"></div>
-                </div>
-            </div>
-        </nz-content>
+            </nz-content>
+        </nz-layout>
     </nz-layout>
-</nz-layout>
+</nz-spin>
 
 <nz-modal [(nzVisible)]="jiraCredentialModalVisible" nzTitle="Enter your credentials" (nzOnCancel)="jiraModalCancel()"
     (nzOnOk)="onCredentialsSubmit()" [nzOkLoading]="connectionProgress">

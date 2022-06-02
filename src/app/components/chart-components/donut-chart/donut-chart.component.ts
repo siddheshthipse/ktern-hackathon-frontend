@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, SimpleChanges } from '@angular/core';
 import { EChartsOption } from 'echarts';
 
 @Component({
@@ -8,12 +8,83 @@ import { EChartsOption } from 'echarts';
 })
 export class DonutChartComponent implements OnInit {
 
+  @Input() inputData: any;
+  actualData: any;
   constructor() { }
 
   ngOnInit(): void {
+    console.log(this.inputData);
+
+    setTimeout(() => {
+      this.makeSense(this.inputData)
+    }, 1000);
   }
 
-  chartOption:EChartsOption = {
+  ngOnChanges(changes: SimpleChanges) {
+    this.makeSense(changes['inputData'].currentValue);
+  }
+
+  makeSense(inputData: any) {
+    let countP = 0;
+    let countT = 0;
+    let countQ = 0;
+    let countD = 0;
+    this.inputData.forEach((element: any) => {
+      if (element.status == 'In Progress') {
+        countP++;
+      } else if (element.status == 'Testing') {
+        countT++;
+      } else if (element.status == 'Released in Quality') {
+        countQ++;
+      } else if (element.status == 'Done') {
+        countD++;
+      }
+    });
+
+    this.actualData = [
+      { value: countP, name: 'In Progress' },
+      { value: countT, name: 'Testing' },
+      { value: countQ, name: 'In Quality' },
+      { value: countD, name: 'Done' },
+    ]
+
+    console.log('Fimnal Chart Obj');
+    console.log(this.actualData);
+
+    this.chartOption = {
+      tooltip: {
+        trigger: 'item'
+      },
+      legend: {
+        top: '5%',
+        left: 'center'
+      },
+      series: [
+        {
+          name: 'Status',
+          type: 'pie',
+          radius: ['40%', '70%'],
+          avoidLabelOverlap: false,
+          label: {
+            show: false,
+            position: 'center'
+          },
+          emphasis: {
+            label: {
+              show: true,
+              fontSize: '15',
+            }
+          },
+          labelLine: {
+            show: false
+          },
+          data: this.actualData
+        }
+      ]
+    };
+  }
+
+  chartOption: EChartsOption = {
     tooltip: {
       trigger: 'item'
     },
@@ -41,14 +112,13 @@ export class DonutChartComponent implements OnInit {
           show: false
         },
         data: [
-          { value: 1048, name: 'Search Engine' },
-          { value: 735, name: 'Direct' },
-          { value: 580, name: 'Email' },
-          { value: 484, name: 'Union Ads' },
-          { value: 300, name: 'Video Ads' }
+          { value: 1, name: 'In Progress' },
+          { value: 7, name: 'Testing' },
+          { value: 5, name: 'In Quality' },
+          { value: 4, name: 'Done' },
         ]
       }
     ]
   };
-  
+
 }

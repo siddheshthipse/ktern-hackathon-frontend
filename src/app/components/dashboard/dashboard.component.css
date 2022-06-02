@@ -2,8 +2,17 @@
   height: 32px;
   background: white;
   margin: 16px;
-  color: #5B7AD8;
+  color: #5b7ad8;
   font-family: "Montserrat", sans-serif;
+}
+
+.selectedStyle {
+  border-bottom: 4px solid #5b7ad8;
+  border-radius: 8px;
+}
+
+.defaultStyle {
+  border-radius: 8px;
 }
 
 .layout {

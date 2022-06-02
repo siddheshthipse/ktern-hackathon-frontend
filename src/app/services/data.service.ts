@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
-import fetch from 'node-fetch';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor() {}
+  constructor(private http:HttpClient) {}
 
   
   // fetch function
@@ -25,4 +25,13 @@ export class DataService {
 
   //   console.log(res);
   // }
+
+  getProjects(){
+    return this.http.get('http://localhost:3000/jira/project');
+  }
+
+  getDashboardData(projectKey:any){
+    console.log(`http://localhost:3000/jira/dashboard?key=${projectKey}`);
+    return this.http.get(`http://localhost:3000/jira/dashboard?key=${projectKey}`);
+  }
 }
