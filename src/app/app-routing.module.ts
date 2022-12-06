@@ -5,6 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ProjectLaunchpadComponent } from './components/project-launchpad/project-launchpad.component';
 
 const routes: Routes = [
+  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
   {
     path:'get-started',
     component:LoginComponent
